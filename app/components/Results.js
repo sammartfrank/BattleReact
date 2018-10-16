@@ -4,6 +4,7 @@ var queryString = require('query-string');
 var api = require('../utils/api');
 var Link = require('react-router-dom').Link;
 var PlayerPreview = require('./PlayerPreview');
+var Loading = require('./Loading.js');
 
 function Profile(props) {
 	var info = props.info;
@@ -28,7 +29,7 @@ Profile.propTypes = {
 function Player (props){
 	return (
 		<div>
-			<h1 className='header'>{props.label}</h1>
+			<h1 className='header' style={{color:'orange'}}>{props.label}</h1>
 			<h3 style={{textAlign: 'center'}}>Score: {props.score}</h3>
 			<Profile info={props.profile} />
 		</div>
@@ -83,7 +84,7 @@ class Results extends React.Component {
 		var loading = this.state.loading;
 
 		if (loading === true) {
-			return <p>Loading..</p>
+			return <Loading />
 		}
 		if (error) {
 			return (
