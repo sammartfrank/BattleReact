@@ -1,8 +1,8 @@
-var React = require('react');
-var PropTypes = require('prop-types');
+import React from 'react'
+import PropTypes from 'prop-types'
 
 
-function PlayerPreview(props) {
+PlayerPreview = (props) => {
 	 return (
 	 		<div>
 	 			<div className='column'>
@@ -22,4 +22,4 @@ PlayerPreview.propTypes = {
 	username: PropTypes.string.isRequired,
 }
 
-module.exports = PlayerPreview;
+export default PlayerPreview;

@@ -1,12 +1,12 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var queryString = require('query-string');
-var api = require('../utils/api');
-var Link = require('react-router-dom').Link;
-var PlayerPreview = require('./PlayerPreview');
-var Loading = require('./Loading.js');
+import React from 'react'
+import PropTypes from 'prop-types'
+import queryString from 'query-string'
+import api from '../utils/api'
+import {Link} from 'react-router-dom'
+import PlayerPreview from './PlayerPreview'
+import Loading from './Loading.js'
 
-function Profile(props) {
+Profile = (props) => {
 	var info = props.info;
 	return (
 		<PlayerPreview avatar={info.avatar_url} username={info.login}>
@@ -26,7 +26,7 @@ Profile.propTypes = {
 	info: PropTypes.object.isRequired
 }
 
-function Player (props){
+Player = (props) => {
 	return (
 		<div>
 			<h1 className='header' style={{color:'orange'}}>{props.label}</h1>
@@ -56,9 +56,9 @@ class Results extends React.Component {
 		api.battle([
 			players.playerOneName,
 			players.playerTwoName
-		]).then(function (results) {
+		]).then((results) => {
 			if (results === null) {
-				return this.setState(function() {
+				return this.setState(() => {
 					return {
 						error: 'Looks like there was an error. Check they are valid users on GitHub',
 						loading: false,
@@ -66,7 +66,7 @@ class Results extends React.Component {
 				})
 			}
 
-			this.setState(function () {
+			this.setState(() => {
 				return {
 					error: null,
 					winner: results[0],
@@ -74,7 +74,7 @@ class Results extends React.Component {
 					loading: false
 				}
 			});
-		}.bind(this));
+		});
 	}
 	render(){
 
@@ -113,4 +113,4 @@ class Results extends React.Component {
 	}
 }
 
-module.exports = Results;
+export default Results;
