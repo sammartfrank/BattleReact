@@ -55,27 +55,23 @@ SelectLanguage.propTypes = {
 
 
 class Popular extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-            selectedLanguage: 'All',
-            repos: null
-        };
-        this.updateLanguage = this.updateLanguage.bind(this);
+    
+    state = {
+      selectedLanguage: 'All',
+      repos: null
     }
 
     componentDidMount() {
     this.updateLanguage(this.state.selectedLanguage);
     }
-
-    updateLanguage(lang) {
+    updateLanguage = async (lang) => {
         this.setState(() => ({
           selectedLanguage: lang,
           repos: null
         }));
 
-     fetchPopuparRepos(lang)
-      .then((repos) => this.setState(()=> console.log(lang, repos) || ({ repos })));
+        const repos = await fetchPopuparRepos(lang)
+        this.setState(()=> console.log(lang, repos) || ({ repos }))
      }
 
     render(){
